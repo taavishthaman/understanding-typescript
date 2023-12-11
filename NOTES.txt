@@ -1,0 +1,111 @@
+Core Types (All core primitive types in typescript are lower case)
+
+    1. number
+    2. string
+    3. boolean
+
+Typescript type system only helps us during development. (i.e before code gets compiled)
+The key difference between JS and TS is that javascript uses dynamic types (resolved at runtime) and typescript uses 
+static types (set during development).
+
+Tuples
+    Tuple is a fixed length, fixed type array. It is typecasted by [d1, d2 ... dn] where d1-dn are data types. Items can still
+    be pushed to a tuple but their datatype cannot be changed.
+
+Enums 
+    Enums is a typescript specific construct that is used to map some values.
+
+    Example:
+        enum Role {
+            ADMIN,
+            AUTHOR,
+            READ_ONLY
+        }
+
+    Then comparisons can be made using an if statement using enum and string.
+    Example:
+        if(person.role === Role.ADMIN) {
+            //Write some logic here  
+        }
+
+    Enum entries can also be assigned values
+
+    Example:
+        enum Role {
+            ADMIN : 5,
+            AUTHOR : 'AUTH',
+            READ_ONLY : 'RO'
+        }
+
+any type: Data can be anything, don't overuse this much as it dosen't use typescript's strengths.
+
+Union Type:
+
+    If you want more flexibility with input of a function so that it can either accept a number or a string or more then
+    use a union type. 
+
+    Example:
+        function add(input1 : number | string, input2 : number | string) {
+
+        }
+
+    This function can accept inputs of both number and string types.
+
+Literal Types:
+    Literal types are ususally used in conjunction with union types. Here the literal can be any combination of some primitive
+    values like "as-number" | "as-text" or 1 | 0 etc. Literal types tells a function that an input can only have some certain
+    values.
+
+Type aliases and Custom Types:
+
+    These can be used to store Union types and Literal Types to make the code more maintainable. They are declared using
+    type keyword. They can also be used for objects.
+
+    Example:
+        type Combinable = number | string
+        type ConversionDescriptor = "as-number" | "as-text"
+
+Function return types and "void"
+    A function in typescript which has no return statement is inferred as void. A function which has a return statement
+    but does not return anything is inferred as undefined.
+
+    Example:
+        function add(n1: number, n2: number) : void {
+            console.log(n1 + n2);
+        }
+
+        function add(n1: number, n2: number) : undefined {
+            console.log(n1 + n2);
+            return;
+        }
+
+Function as types
+    Variables can also be inferred as functions and the type of function can also be specified.
+
+    Example
+
+        function add(n1: number, n2: number) {
+            return n1 + n2;
+        }
+
+        let combiner : (a : number, b: number) => number;
+        combiner = add;
+
+        console.log(combiner(10, 20));
+
+
+Unknown Type:
+
+    Unknown is similar to any but a little bit more strict. Let's say you create another variable and try to assign it the
+    value inferred as unknown. This will result in an error because unknown means that we don't know what the value may
+    contain so it cannot be assigned to another variable. But this will execute if any is used instead of unknown.
+
+Never Type:
+
+    Never type never returns anything. Functions which throw an error (which crash the script and never return anything) or
+    functions which run an infinite loop have a return type of never.
+
+
+
+ 
+ 
