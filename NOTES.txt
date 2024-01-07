@@ -105,6 +105,78 @@ Never Type:
     Never type never returns anything. Functions which throw an error (which crash the script and never return anything) or
     functions which run an infinite loop have a return type of never.
 
+ES6
+    let was introduced because it resides inside block scope. For the sake of cleaner code.
+
+public and private keywords are only supported by typescript, and not javascript until very recently. 
+The syntax is different(#).
+
+readonly keyword on a property cannot be reassigned.
+private properties cannot be accessed even by extended calsses, for that purpose protected must be used
+
+Getters and Setters
+
+    Getters and Setters can be used as class properties like this
+
+    class Accounting {
+        get lastReport() {
+            return this.reports[0]
+        }
+
+        set lastReport(value: string) {
+            this.reportLast = value;
+        }
+    }
+
+    const accounting = new Accounting();
+    accounting.lastReport = "Yearly analysis";
+    console.log(accounting.lastReport);
+
+    DO NOT USE BRACKETS
+
+Static properties and methods:
+
+    Math.PI, Math.pow() etc are examples of static methods. Static methods and properties are accessed directly on the class
+
+    To add static properties and methods add the static keyword before functions or properties. They cannot be accessed within
+    a class using the this keyword.
+
+Abstract Classes:
+
+    Abstract classes are defined by using the abstract keyword. The abstarct methods and properties must also be appended by 
+    a abtract keyword. Abstract methods do not have any implementation, so they do not have any curly braces. You can only
+    specify the passed parameters and the return type using typescript's safety check.
+
+    Abstract classes cannot be instantiated either.
+
+Singletons and private constructors:
+
+    Singleton pattern is useful for ensuring that you only have one instantiation of a class at a time isnide your program.
+    Exactly one object based on a class.
+
+    Singletons are created by adding a private keyword in front of the constructor function. Then we cannot use new while
+    instantiating an object, instead we create a static method which can be called getInstance which checks if an instance
+    already exists for the class and returns it, and if the instance does not exist it created a new object for that class
+    from inside the class and then returns it.
+
+    In the main or outside function the object of the signleton class is accessed by calling ClassName.getInstance().
+
+
+Interfaces
+    Interface is used to define a structre of an object. They typecheck some objects which must have a particular structre.
+
+    Classes implement interfaces too and have some structre based on interfaces. Classes can implement multiple interfaces.
+
+    Major difference between using interface for objects vs classes is that object must contain exactly all the properties
+    and methods defined in an interface whereas classes must have all properties and methods of the interface but we can add
+    more properties and methods to the class which implements an interface
+
+    We can also add readonly modifier to an interface.
+
+    Interfaces can extend other interfaces.
+
+    Interfaces can also be used for functions.
+
 
 
  
